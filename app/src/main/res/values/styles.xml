@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="EditText">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:paddingStart">14dp</item>
+        <item name="android:paddingEnd">14dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:drawablePadding">14dp</item>
+    </style>
+
+    <style name="RadioButton">
+        <item name="android:padding">5dp</item>
+        <item name="android:scaleY">0.8</item>
+        <item name="android:scaleX">0.8</item>
+    </style>
+
+    <style name="Button" />
+
+    <style name="Button.Primary">
+        <item name="android:background">@drawable/button_primary_background</item>
+        <item name="android:paddingStart">14dp</item>
+        <item name="android:paddingEnd">14dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextView" />
+
+    <style name="TextView.Error">
+        <item name="android:visibility">gone</item>
+        <item name="android:textColor">@color/red</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+    </style>
+
+    <style name="TextView.Title">
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+
+</resources>

@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">owt_hackathon</string>
+    <string name="text_full_name">Full name</string>
+    <string name="text_gender">Gender</string>
+    <string name="text_personal_id">Personal ID</string>
+    <string name="text_email">Email</string>
+    <string name="text_address">Address</string>
+    <string name="text_phone_number">Phone number</string>
+    <string name="text_male">Male</string>
+    <string name="text_female">Female</string>
+    <string name="text_other">Other</string>
+    <string name="text_reenter_password">Reenter password</string>
+    <string name="text_password">Password</string>
+    <string name="text_set_password">Set your password</string>
+    <string name="text_fill_in_profile">Fill in your basic information</string>
+    <string name="button_text_next">Next</string>
+    <string name="button_text_submit">Submit</string>
 </resources>
