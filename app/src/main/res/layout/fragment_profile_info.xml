@@ -39,7 +39,7 @@
             app:layout_constraintTop_toBottomOf="@id/imgAvatar"
             style="@style/TextView.Error" />
 
-        <EditText
+        <com.owt_dn.owt_hackathon.views.HasTextChagedEditText
             android:id="@+id/edtFullName"
             style="@style/EditText"
             android:layout_width="match_parent"
@@ -58,7 +58,7 @@
             app:layout_constraintTop_toBottomOf="@id/edtFullName"
             style="@style/TextView.Error" />
 
-        <TextView
+        <com.owt_dn.owt_hackathon.views.HasTextChagedEditText
             android:id="@+id/tvBirthday"
             style="@style/EditText"
             android:layout_width="0dp"
@@ -142,7 +142,7 @@
             app:layout_constraintTop_toBottomOf="@id/radioGroupGender"
             style="@style/TextView.Error" />
 
-        <EditText
+        <com.owt_dn.owt_hackathon.views.HasTextChagedEditText
             android:id="@+id/edtPersonalID"
             style="@style/EditText"
             android:layout_width="match_parent"
@@ -161,7 +161,7 @@
             app:layout_constraintTop_toBottomOf="@id/edtPersonalID"
             style="@style/TextView.Error" />
 
-        <EditText
+        <com.owt_dn.owt_hackathon.views.HasTextChagedEditText
             android:id="@+id/edtEmail"
             style="@style/EditText"
             android:layout_width="match_parent"
@@ -180,7 +180,7 @@
             app:layout_constraintTop_toBottomOf="@id/edtEmail"
             style="@style/TextView.Error" />
 
-        <EditText
+        <com.owt_dn.owt_hackathon.views.HasTextChagedEditText
             android:id="@+id/edtPhoneNumber"
             style="@style/EditText"
             android:layout_width="match_parent"
@@ -198,7 +198,7 @@
             app:layout_constraintTop_toBottomOf="@id/edtPhoneNumber"
             style="@style/TextView.Error" />
 
-        <EditText
+        <com.owt_dn.owt_hackathon.views.HasTextChagedEditText
             android:id="@+id/edtAddress"
             style="@style/EditText"
             android:layout_width="match_parent"
