@@ -1,7 +1,8 @@
-package com.owt_dn.owt_hackathon
+package com.owt_dn.owt_hackathon.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.owt_dn.owt_hackathon.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
