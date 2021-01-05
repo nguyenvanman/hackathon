@@ -19,10 +19,10 @@ data class ProfileResponse(
     @SerializedName("approval_date") val approvalDate: Date,
     @SerializedName("valid") val isValid: Boolean,
     @SerializedName("remind_first_vaccinate_date_time") val remindFirstVaccinateDate: Date,
-    @SerializedName("first_vaccinate_date_time") val firstVaccinateDate: Date,
-    @SerializedName("first_vaccinate_description") val firstVaccinateDescription: Date,
-    @SerializedName("remind_second_vaccinate_date_time") val remindSecondVaccinateDate: Date,
-    @SerializedName("second_vaccinate_date_time") val secondVaccinateDate: Date,
-    @SerializedName("second_vaccinate_description") val secondVaccinateDescription: Date,
+    @SerializedName("first_vaccinate_date_time") val firstVaccinateDate: Date? = null,
+    @SerializedName("first_vaccinate_description") val firstVaccinateDescription: Date? = null,
+    @SerializedName("remind_second_vaccinate_date_time") val remindSecondVaccinateDate: Date? = null,
+    @SerializedName("second_vaccinate_date_time") val secondVaccinateDate: Date? = null,
+    @SerializedName("second_vaccinate_description") val secondVaccinateDescription: Date? = null,
     @SerializedName("status") val status: String
 )

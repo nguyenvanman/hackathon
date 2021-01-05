@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.telephony.PhoneNumberUtils
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.owt_dn.owt_hackathon.R
@@ -67,6 +68,15 @@ class ProfileActivity : AppCompatActivity() {
         tvPhoneNumber.text = PhoneNumberUtils.formatNumber(profileResponse.phone, Locale.getDefault().country)
         tvPersonalID.text = profileResponse.personalId
         showQrCode(profileResponse.qrCode)
+
+        if (profileResponse.firstVaccinateDate == null) {
+            blockVaccinationCalendar.visibility =  View.GONE
+        } else {
+            blockVaccinationCalendar.visibility =  View.VISIBLE
+            tvFirstTime.text = SimpleDateFormat("dd MM yyyy").format(profileResponse.firstVaccinateDate)
+            tvSecondTime.text = SimpleDateFormat("dd MM yyyy").format(profileResponse.secondVaccinateDate!!)
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
