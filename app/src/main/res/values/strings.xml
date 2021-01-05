@@ -18,4 +18,5 @@
     <string name="text_password_not_match">Password not match</string>
     <string name="text_missing_password">Please enter your password</string>
     <string name="text_missing_fields">Please fill in all fields</string>
+    <string name="text_register_success">Thank you for submitting to vacination. Here is your QR code.</string>
 </resources>

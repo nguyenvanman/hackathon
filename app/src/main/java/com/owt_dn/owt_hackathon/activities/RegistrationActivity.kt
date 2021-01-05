@@ -10,6 +10,7 @@ import com.owt_dn.owt_hackathon.fragments.ProfilePasswordFragment
 import com.owt_dn.owt_hackathon.services.apis.implementations.ProfileService
 import com.owt_dn.owt_hackathon.services.apis.models.ProfileForm
 import com.owt_dn.owt_hackathon.services.apis.models.RegistrationResponse
+import com.owt_dn.owt_hackathon.utils.Preferences
 import kotlinx.android.synthetic.main.activity_registration.*
 import org.jetbrains.anko.toast
 import java.util.*
@@ -91,8 +92,9 @@ class RegistrationActivity : AppCompatActivity() {
     }
 
     private fun onSubmitSuccess(registrationResponse: RegistrationResponse) {
+        Preferences.saveToken(this, registrationResponse.token)
         startActivity(Intent(this, QrCodeActivity::class.java).also {
-            it.putExtra("q_r_code", registrationResponse.qrCode)
+            it.putExtra(QrCodeActivity.QR_CODE_KEY, registrationResponse.qrCode)
         })
     }
 
