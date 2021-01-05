@@ -3,6 +3,7 @@ package com.owt_dn.owt_hackathon.activities
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.telephony.PhoneNumberUtils
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +18,7 @@ import com.owt_dn.owt_hackathon.views.LoadingDialog
 import kotlinx.android.synthetic.main.activity_profile.*
 import org.jetbrains.anko.toast
 import java.text.SimpleDateFormat
+import java.util.*
 
 class ProfileActivity : AppCompatActivity() {
     lateinit var loadingDialog: LoadingDialog
@@ -62,7 +64,7 @@ class ProfileActivity : AppCompatActivity() {
         tvBirthday.text = SimpleDateFormat("dd MM yyyy").format(profileResponse.birthday)
         tvAddress.text = profileResponse.address
         tvEmail.text = profileResponse.email
-        tvPhoneNumber.text = profileResponse.phone
+        tvPhoneNumber.text = PhoneNumberUtils.formatNumber(profileResponse.phone, Locale.getDefault().country)
         tvPersonalID.text = profileResponse.personalId
         showQrCode(profileResponse.qrCode)
     }
