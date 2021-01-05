@@ -11,12 +11,15 @@ import com.owt_dn.owt_hackathon.services.apis.implementations.ProfileService
 import com.owt_dn.owt_hackathon.services.apis.models.ProfileForm
 import com.owt_dn.owt_hackathon.services.apis.models.RegistrationResponse
 import com.owt_dn.owt_hackathon.utils.Preferences
+import com.owt_dn.owt_hackathon.views.LoadingDialog
 import kotlinx.android.synthetic.main.activity_registration.*
 import org.jetbrains.anko.toast
 import java.util.*
 
 class RegistrationActivity : AppCompatActivity() {
     private var isValid = false
+
+    lateinit var loadingDialog: LoadingDialog
 
     private var profileForm = ProfileForm()
 
@@ -52,6 +55,8 @@ class RegistrationActivity : AppCompatActivity() {
     }
 
     private fun initialize() {
+        loadingDialog = LoadingDialog(this)
+
         viewPager.adapter = ProfilePagerAdapter(supportFragmentManager, fragments)
 
         viewPager.onPageChanged { position ->
@@ -84,6 +89,7 @@ class RegistrationActivity : AppCompatActivity() {
 
     private fun submit() {
         profileForm.profileUrl = "https://res.cloudinary.com/dw0yzvsvn/image/upload/v1598793192/sample.jpg"
+        loadingDialog.show()
         ProfileService.register(
             profileForm = profileForm,
             onSuccess = ::onSubmitSuccess,
@@ -92,6 +98,7 @@ class RegistrationActivity : AppCompatActivity() {
     }
 
     private fun onSubmitSuccess(registrationResponse: RegistrationResponse) {
+        loadingDialog.hide()
         Preferences.saveToken(this, registrationResponse.token)
         startActivity(Intent(this, QrCodeActivity::class.java).also {
             it.putExtra(QrCodeActivity.QR_CODE_KEY, registrationResponse.qrCode)
@@ -99,6 +106,7 @@ class RegistrationActivity : AppCompatActivity() {
     }
 
     private fun onSubmitFailed(error: String) {
+        loadingDialog.hide()
         toast(error)
     }
 }
