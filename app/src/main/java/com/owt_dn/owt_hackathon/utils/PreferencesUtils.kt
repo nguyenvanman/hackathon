@@ -16,4 +16,11 @@ object PreferencesUtils {
     fun getToken(context: Context): String? {
         return context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE).getString(TOKEN_KEY, "")
     }
+
+    fun clearToken(context: Context) {
+        context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE).edit().apply {
+            remove(TOKEN_KEY)
+            apply()
+        }
+    }
 }

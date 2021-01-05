@@ -20,4 +20,6 @@
     <string name="text_missing_fields">Please fill in all fields</string>
     <string name="text_register_success">Thank you for submitting to vacination. Here is your QR code.</string>
     <string name="text_menu_home">Home</string>
+    <string name="text_sign_in">Sign in</string>
+    <string name="text_register">Register</string>
 </resources>

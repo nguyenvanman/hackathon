@@ -13,11 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Owt_hackathon"
         android:usesCleartextTraffic="true">
+        <activity android:name=".activities.SignInActivity"></activity>
         <activity android:name=".activities.ProfileActivity" />
         <activity android:name=".activities.QrCodeActivity" />
-        <activity android:name=".activities.RegistrationActivity">
-
-        </activity>
+        <activity android:name=".activities.RegistrationActivity"></activity>
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

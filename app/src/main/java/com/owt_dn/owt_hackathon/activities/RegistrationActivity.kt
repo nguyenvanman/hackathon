@@ -2,6 +2,8 @@ package com.owt_dn.owt_hackathon.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.owt_dn.owt_hackathon.R
 import com.owt_dn.owt_hackathon.adapters.ProfilePagerAdapter
@@ -108,5 +110,19 @@ class RegistrationActivity : AppCompatActivity() {
     private fun onSubmitFailed(error: String) {
         loadingDialog.hide()
         toast(error)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.sign_in_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.actionSignIn) {
+            startActivity(Intent(this, SignInActivity::class.java))
+            return true
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }

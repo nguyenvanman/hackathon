@@ -1,8 +1,11 @@
 package com.owt_dn.owt_hackathon.activities
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import com.bumptech.glide.Glide
 import com.owt_dn.owt_hackathon.R
 import com.owt_dn.owt_hackathon.services.apis.implementations.ProfileService
@@ -59,5 +62,27 @@ class ProfileActivity : AppCompatActivity() {
         tvEmail.text = profileResponse.email
         tvPhoneNumber.text = profileResponse.phone
         tvPersonalID.text = profileResponse.personalId
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.actions_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.actionSignIn -> {
+                startActivity(Intent(this, SignInActivity::class.java))
+                PreferencesUtils.clearToken(this)
+                finish()
+                true
+            }
+            R.id.actionSignUp -> {
+                startActivity(Intent(this, RegistrationActivity::class.java))
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
