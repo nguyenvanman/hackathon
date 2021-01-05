@@ -38,32 +38,29 @@
                     android:layout_height="wrap_content"
                     android:paddingStart="14dp"
                     android:paddingEnd="14dp"
-                    app:layout_constraintBottom_toBottomOf="@id/imgAvatar"
+                    app:layout_constraintBottom_toTopOf="@id/tvBirthday"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/imgAvatar"
                     tools:ignore="UseCompatTextViewDrawableXml" />
 
                 <TextView
                     android:id="@+id/tvBirthday"
-                    style="@style/EditText"
-                    android:layout_width="match_parent"
+                    style="@style/EditText.Small"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textColor="#000000"
-                    app:drawableStartCompat="@drawable/ic_birthday"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/imgAvatar" />
+                    app:layout_constraintStart_toEndOf="@id/imgAvatar"
+                    app:layout_constraintEnd_toStartOf="@id/tvGender"
+                    app:layout_constraintBottom_toBottomOf="@id/imgAvatar"
+                    app:drawableStartCompat="@drawable/ic_birthday" />
 
                 <TextView
                     android:id="@+id/tvGender"
-                    style="@style/EditText"
+                    style="@style/EditText.Small"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
                     app:drawableStartCompat="@drawable/ic_gender"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvBirthday" />
+                    app:layout_constraintBottom_toBottomOf="@id/imgAvatar" />
 
                 <TextView
                     android:id="@+id/tvPersonalID"
@@ -71,7 +68,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:drawableStartCompat="@drawable/ic_personal_id"
-                    app:layout_constraintTop_toBottomOf="@id/tvGender" />
+                    app:layout_constraintTop_toBottomOf="@id/imgAvatar" />
 
                 <TextView
                     android:id="@+id/tvEmail"
