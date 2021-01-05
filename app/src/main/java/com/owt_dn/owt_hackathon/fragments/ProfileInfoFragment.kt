@@ -1,5 +1,7 @@
 package com.owt_dn.owt_hackathon.fragments
 
+import android.annotation.SuppressLint
+import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -9,11 +11,34 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.owt_dn.owt_hackathon.R
 import com.owt_dn.owt_hackathon.services.CloudinaryService
+import com.owt_dn.owt_hackathon.services.apis.models.Gender
+import com.owt_dn.owt_hackathon.services.apis.models.ProfileForm
+import com.owt_dn.owt_hackathon.utils.showDatePicker
 import com.owt_dn.owt_hackathon.utils.toByteArray
 import kotlinx.android.synthetic.main.fragment_profile_info.*
+import org.jetbrains.anko.sdk27.coroutines.onCheckedChange
+import org.jetbrains.anko.support.v4.toast
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ProfileInfoFragment : Fragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+    private var birthday: Date? = null
+    private var fullName: String? = null
+    private var profileUrl: String? = null
+    private var gender: String? = null
+    private var personalId: String? = null
+    private var email: String? = null
+    private var phoneNumber: String? = null
+    private var address: String? = null
+
+    var onValidate: ((Boolean, ProfileForm) -> Unit)? = null
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_profile_info, container, false)
     }
 
@@ -23,9 +48,52 @@ class ProfileInfoFragment : Fragment() {
         initialize()
     }
 
+    @SuppressLint("SimpleDateFormat")
     private fun initialize() {
         imgAvatar.setOnClickListener {
             openCamera()
+        }
+
+        btnChooseBirthday.setOnClickListener {
+            context!!.showDatePicker(onDateSet = {
+                birthday = it
+                tvBirthday.setText(SimpleDateFormat("dd MM yyyy").format(birthday!!))
+                validate()
+            })
+        }
+
+        edtFullName.onTextChanged {
+            fullName = it
+            validate()
+        }
+
+        edtAddress.onTextChanged {
+            address = it
+            validate()
+        }
+
+        edtEmail.onTextChanged {
+            email = it
+            validate()
+        }
+
+        edtPersonalID.onTextChanged {
+            personalId = it
+            validate()
+        }
+
+        edtPhoneNumber.onTextChanged {
+            phoneNumber = it
+            validate()
+        }
+
+        radioGroupGender.onCheckedChange { _, checkedId ->
+            gender = mapOf(
+                R.id.male to Gender.MALE,
+                R.id.female to Gender.FEMALE,
+                R.id.other to Gender.OTHER
+            )[checkedId]
+            validate()
         }
     }
 
@@ -36,15 +104,39 @@ class ProfileInfoFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        val bitmap = data?.extras?.get("data") as Bitmap
-        imgAvatar.setImageBitmap(bitmap)
-        CloudinaryService.upload(
-            bitmap.toByteArray(),
-        onSuccess = {
 
-        },
-        onError = {
+        if (requestCode == 111 && resultCode == RESULT_OK) {
+            val bitmap = data?.extras?.get("data") as Bitmap
+            CloudinaryService.upload(
+                bitmap.toByteArray(),
+                onSuccess = {
+                    profileUrl = it
+                    validate()
+                },
+                onProgress = { bytes, totalBytes ->
 
-        })
+                },
+                onError = {
+                    toast(it.toString())
+                })
+        }
+    }
+
+    private fun validate() {
+        val isValid =
+            !fullName.isNullOrBlank() && !personalId.isNullOrBlank() && !email.isNullOrBlank() && !phoneNumber.isNullOrBlank() && !gender.isNullOrBlank() && birthday != null && !address.isNullOrBlank()
+        onValidate?.invoke(
+            isValid,
+            ProfileForm(
+                fullName = fullName,
+                personalId = personalId,
+                email = email,
+                phone = phoneNumber,
+                profileUrl = profileUrl,
+                gender = gender,
+                birthday = birthday,
+                address = address
+            )
+        )
     }
 }

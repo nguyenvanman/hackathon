@@ -11,6 +11,10 @@ import kotlinx.android.synthetic.main.fragment_profile_password.*
 class ProfilePasswordFragment : Fragment() {
     var onBack: (() -> Unit)? = null
 
+    private var password: String? = null
+
+    var onPasswordInput: ((String) -> Unit) ?= null
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_profile_password, container, false)
     }
@@ -24,6 +28,24 @@ class ProfilePasswordFragment : Fragment() {
     private fun initialize() {
         btnBack.setOnClickListener {
             onBack?.invoke()
+        }
+
+        edtPasswordConfirmation.onTextChanged {
+            updatePassword()
+        }
+
+        edtPassword.onTextChanged {
+            updatePassword()
+        }
+    }
+
+    private fun updatePassword() {
+        if (edtPassword.text() == edtPasswordConfirmation.text() && edtPassword.text().isNotBlank() && edtPasswordConfirmation.text().isNotBlank()) {
+            password = edtPasswordConfirmation.text()
+            tvPasswordValidation.visibility = View.GONE
+            onPasswordInput?.invoke(password.toString())
+        } else {
+            tvPasswordValidation.visibility = View.VISIBLE
         }
     }
 }

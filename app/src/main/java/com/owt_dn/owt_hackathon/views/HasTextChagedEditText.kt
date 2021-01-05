@@ -29,4 +29,8 @@ class HasTextChagedEditText : AppCompatEditText {
         })
     }
 
+    fun text(): String {
+        return text.toString()
+    }
+
 }

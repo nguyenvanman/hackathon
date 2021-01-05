@@ -1,5 +1,6 @@
 package com.owt_dn.owt_hackathon.services.apis
 
+import com.google.gson.GsonBuilder
 import com.owt_dn.owt_hackathon.environments.Environment
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -9,9 +10,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ApiClient {
     private var retrofit: Retrofit? = null
 
+    private val gson = GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create()
+
     private val builder = Retrofit.Builder()
         .baseUrl(Environment.Api.BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(GsonConverterFactory.create(gson))
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
 
     private val httpClient = OkHttpClient.Builder()

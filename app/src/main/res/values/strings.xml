@@ -15,4 +15,7 @@
     <string name="text_fill_in_profile">Fill in your basic information</string>
     <string name="button_text_next">Next</string>
     <string name="button_text_submit">Submit</string>
+    <string name="text_password_not_match">Password not match</string>
+    <string name="text_missing_password">Please enter your password</string>
+    <string name="text_missing_fields">Please fill in all fields</string>
 </resources>
