@@ -41,7 +41,7 @@
             style="@style/TextView.Error" />
 
         <com.owt_dn.owt_hackathon.views.HasTextChagedEditText
-            android:id="@+id/edtFullName"
+            android:id="@+id/tvFullName"
             style="@style/EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -56,10 +56,10 @@
             android:id="@+id/tvFullNameValidation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/edtFullName"
+            app:layout_constraintTop_toBottomOf="@id/tvFullName"
             style="@style/TextView.Error" />
 
-        <com.owt_dn.owt_hackathon.views.HasTextChagedEditText
+        <TextView
             android:id="@+id/tvBirthday"
             style="@style/EditText"
             android:layout_width="0dp"
@@ -147,7 +147,7 @@
             style="@style/TextView.Error" />
 
         <com.owt_dn.owt_hackathon.views.HasTextChagedEditText
-            android:id="@+id/edtPersonalID"
+            android:id="@+id/tvPersonalID"
             style="@style/EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -162,11 +162,11 @@
             android:id="@+id/tvPersonalIDValidation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/edtPersonalID"
+            app:layout_constraintTop_toBottomOf="@id/tvPersonalID"
             style="@style/TextView.Error" />
 
         <com.owt_dn.owt_hackathon.views.HasTextChagedEditText
-            android:id="@+id/edtEmail"
+            android:id="@+id/tvEmail"
             style="@style/EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -181,11 +181,11 @@
             android:id="@+id/tvEmailValidation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/edtEmail"
+            app:layout_constraintTop_toBottomOf="@id/tvEmail"
             style="@style/TextView.Error" />
 
         <com.owt_dn.owt_hackathon.views.HasTextChagedEditText
-            android:id="@+id/edtPhoneNumber"
+            android:id="@+id/tvPhoneNumber"
             style="@style/EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -199,11 +199,11 @@
             android:id="@+id/tvPhoneNumberValidation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/edtPhoneNumber"
+            app:layout_constraintTop_toBottomOf="@id/tvPhoneNumber"
             style="@style/TextView.Error" />
 
         <com.owt_dn.owt_hackathon.views.HasTextChagedEditText
-            android:id="@+id/edtAddress"
+            android:id="@+id/tvAddress"
             style="@style/EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -217,7 +217,7 @@
             android:id="@+id/tvAddressValidation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/edtAddress"
+            app:layout_constraintTop_toBottomOf="@id/tvAddress"
             style="@style/TextView.Error" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

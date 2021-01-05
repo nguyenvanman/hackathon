@@ -88,7 +88,7 @@ class RegistrationActivity : AppCompatActivity() {
     }
 
     private fun submit() {
-        profileForm.profileUrl = "https://res.cloudinary.com/dw0yzvsvn/image/upload/v1598793192/sample.jpg"
+//        profileForm.profileUrl = "https://res.cloudinary.com/dw0yzvsvn/image/upload/v1598793192/sample.jpg"
         loadingDialog.show()
         ProfileService.register(
             profileForm = profileForm,

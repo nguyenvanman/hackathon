@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.owt_dn.owt_hackathon.R
+import com.owt_dn.owt_hackathon.environments.Environment.WEB_CHECK_QR_CODE_PATH
 import com.owt_dn.owt_hackathon.utils.encodeAsBitmap
 import kotlinx.android.synthetic.main.activity_qr_code.*
 
@@ -22,8 +23,9 @@ class QrCodeActivity : AppCompatActivity() {
     }
 
     private fun showQrCode() {
-        val qrCode = intent.getStringExtra(QR_CODE_KEY) ?: ""
-        val bitmap = encodeAsBitmap(qrCode)
+        val qrCodeGuid = intent.getStringExtra(QR_CODE_KEY) ?: ""
+        val qrCodeContent = "${WEB_CHECK_QR_CODE_PATH}$qrCodeGuid"
+        val bitmap = encodeAsBitmap(qrCodeContent)
         imgQrCode.setImageBitmap(bitmap)
     }
 

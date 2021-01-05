@@ -57,32 +57,32 @@ class ProfileInfoFragment : Fragment() {
         btnChooseBirthday.setOnClickListener {
             context!!.showDatePicker(onDateSet = {
                 birthday = it
-                tvBirthday.setText(SimpleDateFormat("dd MM yyyy").format(birthday!!))
+                tvBirthday.text = SimpleDateFormat("dd MM yyyy").format(birthday!!)
                 validate()
             })
         }
 
-        edtFullName.onTextChanged {
+        tvFullName.onTextChanged {
             fullName = it
             validate()
         }
 
-        edtAddress.onTextChanged {
+        tvAddress.onTextChanged {
             address = it
             validate()
         }
 
-        edtEmail.onTextChanged {
+        tvEmail.onTextChanged {
             email = it
             validate()
         }
 
-        edtPersonalID.onTextChanged {
+        tvPersonalID.onTextChanged {
             personalId = it
             validate()
         }
 
-        edtPhoneNumber.onTextChanged {
+        tvPhoneNumber.onTextChanged {
             phoneNumber = it
             validate()
         }
