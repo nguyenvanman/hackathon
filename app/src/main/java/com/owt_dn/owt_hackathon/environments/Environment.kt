@@ -7,8 +7,8 @@ object Environment {
     }
 
     object Api {
-        const val BASE_URL = "http://27.71.235.200:8888/api/"
+        const val BASE_URL = "https://covidverify.xyz/api/"
     }
 
-    const val WEB_CHECK_QR_CODE_PATH = "http://localhost:3333/check?code="
+    const val WEB_CHECK_QR_CODE_PATH = "https://covidverify.xyz/check?code="
 }
