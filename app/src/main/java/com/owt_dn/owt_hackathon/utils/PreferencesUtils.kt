@@ -1,9 +1,8 @@
 package com.owt_dn.owt_hackathon.utils
 
 import android.content.Context
-import com.owt_dn.owt_hackathon.MyApplication
 
-object Preferences {
+object PreferencesUtils {
     private const val PREF_NAME = "owt_hackathon_pref"
     private const val TOKEN_KEY = "token"
 
