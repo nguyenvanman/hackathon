@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.owt_dn.owt_hackathon.R
 import com.owt_dn.owt_hackathon.services.CloudinaryService
 import com.owt_dn.owt_hackathon.services.apis.models.Gender
@@ -107,24 +108,27 @@ class ProfileInfoFragment : Fragment() {
 
         if (requestCode == 111 && resultCode == RESULT_OK) {
             val bitmap = data?.extras?.get("data") as Bitmap
+            imgAvatar.setImageResource(R.drawable.loading_progress)
             CloudinaryService.upload(
                 bitmap.toByteArray(),
                 onSuccess = {
                     profileUrl = it
+                    Glide.with(this).load(it).into(imgAvatar)
                     validate()
                 },
-                onProgress = { bytes, totalBytes ->
-
-                },
-                onError = {
-                    toast(it.toString())
-                })
+                onError = { toast(it.toString()) })
         }
     }
 
     private fun validate() {
-        val isValid =
-            !fullName.isNullOrBlank() && !personalId.isNullOrBlank() && !email.isNullOrBlank() && !phoneNumber.isNullOrBlank() && !gender.isNullOrBlank() && birthday != null && !address.isNullOrBlank()
+        val isValid =   !fullName.isNullOrBlank() &&
+                        !personalId.isNullOrBlank() &&
+                        !email.isNullOrBlank() &&
+                        !phoneNumber.isNullOrBlank() &&
+                        !gender.isNullOrBlank() &&
+                        birthday != null &&
+                        !address.isNullOrBlank() &&
+                        !profileUrl.isNullOrBlank()
         onValidate?.invoke(
             isValid,
             ProfileForm(
