@@ -11,6 +11,7 @@ data class ProfileResponse(
     @SerializedName("phone") val phone: String,
     @SerializedName("password") val password: String,
     @SerializedName("profile_url") val profileUrl: String,
+    @SerializedName("q_r_code") val qrCode: String,
     @SerializedName("sex") val gender: String,
     @SerializedName("birthday") val birthday: Date,
     @SerializedName("address") val address: String,

@@ -2,15 +2,17 @@ package com.owt_dn.owt_hackathon.activities
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.owt_dn.owt_hackathon.R
+import com.owt_dn.owt_hackathon.environments.Environment
 import com.owt_dn.owt_hackathon.services.apis.implementations.ProfileService
 import com.owt_dn.owt_hackathon.services.apis.models.ProfileResponse
 import com.owt_dn.owt_hackathon.utils.PreferencesUtils
+import com.owt_dn.owt_hackathon.utils.encodeAsBitmap
 import com.owt_dn.owt_hackathon.views.LoadingDialog
 import kotlinx.android.synthetic.main.activity_profile.*
 import org.jetbrains.anko.toast
@@ -62,6 +64,7 @@ class ProfileActivity : AppCompatActivity() {
         tvEmail.text = profileResponse.email
         tvPhoneNumber.text = profileResponse.phone
         tvPersonalID.text = profileResponse.personalId
+        showQrCode(profileResponse.qrCode)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -84,6 +87,12 @@ class ProfileActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun showQrCode(qrCodeGuid: String) {
+        val qrCodeContent = "${Environment.WEB_CHECK_QR_CODE_PATH}$qrCodeGuid"
+        val bitmap = encodeAsBitmap(qrCodeContent)
+        imgQrCode.setImageBitmap(bitmap)
     }
 
     override fun onBackPressed() {
